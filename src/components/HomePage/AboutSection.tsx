@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Basketball, Code, Brain, ArrowRight } from 'lucide-react';
 import { timelineEvents } from '../../data/timeline';
-import { Basketball as BasketballIcon, Code, Brain, ArrowRight } from 'lucide-react';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ const AboutSection = () => {
   const getCategoryIcon = (category: string) => {
     switch (category) {
       case 'basketball':
-        return <BasketballIcon className="h-6 w-6 text-court-orange" />;
+        return <Basketball className="h-6 w-6 text-court-orange" />;
       case 'web-dev':
         return <Code className="h-6 w-6 text-tech-blue" />;
       case 'machine-learning':

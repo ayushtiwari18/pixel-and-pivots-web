@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball as BasketballIcon, ArrowRight } from 'lucide-react';
+import { Basketball, ArrowRight } from 'lucide-react';
 
 const CTASection = () => {
   return (
@@ -32,7 +32,7 @@ const CTASection = () => {
             <div className="relative h-64 flex items-center justify-center">
               <div className="absolute w-48 h-48 rounded-full bg-court-orange/20 animate-pulse"></div>
               <div className="relative">
-                <BasketballIcon className="h-24 w-24 text-court-orange animate-bounce" />
+                <Basketball className="h-24 w-24 text-court-orange animate-bounce" />
                 <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-black/10 dark:bg-white/10 rounded-full filter blur-sm"></div>
               </div>
             </div>

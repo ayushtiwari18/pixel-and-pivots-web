@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import { Basketball as BasketballIcon } from 'lucide-react';
+import { Basketball } from 'lucide-react';
 
 const NotFound = () => {
   const location = useLocation();
@@ -19,7 +19,7 @@ const NotFound = () => {
         <div className="text-center max-w-md">
           <div className="flex justify-center mb-6">
             <div className="relative">
-              <BasketballIcon className="h-24 w-24 text-court-orange animate-bounce" />
+              <Basketball className="h-24 w-24 text-court-orange animate-bounce" />
               <div className="absolute w-24 h-1 bg-black/10 dark:bg-white/10 rounded-full bottom-0 filter blur-sm"></div>
             </div>
           </div>
