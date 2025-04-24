@@ -1,8 +1,7 @@
-
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { skills } from '../../data/skills';
-import { Basketball, Code, Brain, ArrowRight } from 'lucide-react';
+import { Basketball as BasketballIcon, Code, Brain, ArrowRight } from 'lucide-react';
 
 const SkillsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -141,7 +140,7 @@ const SkillsSection = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 rounded-lg bg-court-orange/10 flex items-center justify-center mr-4">
-                <Basketball className="h-6 w-6 text-court-orange" />
+                <BasketballIcon className="h-6 w-6 text-court-orange" />
               </div>
               <h3 className="text-2xl font-heading font-semibold">Basketball</h3>
             </div>
