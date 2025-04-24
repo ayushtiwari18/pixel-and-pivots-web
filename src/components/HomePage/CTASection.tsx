@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball as BasketballIcon, ArrowRight } from 'lucide-react';
+import { Volleyball as BasketballIcon, ArrowRight } from 'lucide-react';
 
 const CTASection = () => {
   return (

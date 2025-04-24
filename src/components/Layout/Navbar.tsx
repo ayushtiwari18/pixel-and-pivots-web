@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../ThemeProvider';
-import { Basketball as BasketballIcon, Moon, Sun, Menu, X, Code, Brain } from 'lucide-react';
+import { Volleyball as BasketballIcon, Moon, Sun, Menu, X, Code, Brain } from 'lucide-react';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();

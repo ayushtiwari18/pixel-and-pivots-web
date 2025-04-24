@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball as BasketballIcon, Github, Linkedin, Twitter, Mail, Code, Brain } from 'lucide-react';
+import { Volleyball as BasketballIcon, Github, Linkedin, Twitter, Mail, Code, Brain } from 'lucide-react';
 
 const Footer = () => {
   return (

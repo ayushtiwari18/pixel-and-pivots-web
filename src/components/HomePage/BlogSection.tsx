@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball as BasketballIcon, Code, Brain, ArrowRight } from 'lucide-react';
+import { Volleyball as BasketballIcon, Code, Brain, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../../data/blog';
 
 const BlogSection = () => {

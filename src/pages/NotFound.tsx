@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Layout from "../components/Layout/Layout";
-import { Basketball as BasketballIcon } from 'lucide-react';
+import { Volleyball as BasketballIcon } from 'lucide-react';
 
 const NotFound = () => {
   const location = useLocation();
