@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball, Code, Brain, ArrowRight } from 'lucide-react';
+import { Basketball as BasketballIcon, Code, Brain, ArrowRight } from 'lucide-react';
 import { skills } from '../../data/skills';
 
 const SkillsSection = () => {
@@ -41,6 +41,19 @@ const SkillsSection = () => {
   const mlSkills = skills.filter(skill => skill.category === 'ml').slice(0, 6);
   const basketballSkills = skills.filter(skill => skill.category === 'basketball').slice(0, 6);
 
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case 'basketball':
+        return <BasketballIcon className="h-6 w-6 text-court-orange" />;
+      case 'web':
+        return <Code className="h-6 w-6 text-tech-blue" />;
+      case 'ml':
+        return <Brain className="h-6 w-6 text-ml-purple" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section className="section bg-secondary/50 dark:bg-tech-navy/30" ref={sectionRef}>
       <div className="container-custom">
@@ -60,7 +73,7 @@ const SkillsSection = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 rounded-lg bg-tech-blue/10 flex items-center justify-center mr-4">
-                <Code className="h-6 w-6 text-tech-blue" />
+                {getCategoryIcon('web')}
               </div>
               <h3 className="text-2xl font-heading font-semibold">Web Development</h3>
             </div>
@@ -100,7 +113,7 @@ const SkillsSection = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 rounded-lg bg-ml-purple/10 flex items-center justify-center mr-4">
-                <Brain className="h-6 w-6 text-ml-purple" />
+                {getCategoryIcon('ml')}
               </div>
               <h3 className="text-2xl font-heading font-semibold">Machine Learning</h3>
             </div>
@@ -140,7 +153,7 @@ const SkillsSection = () => {
           >
             <div className="flex items-center mb-6">
               <div className="w-12 h-12 rounded-lg bg-court-orange/10 flex items-center justify-center mr-4">
-                <Basketball className="h-6 w-6 text-court-orange" />
+                {getCategoryIcon('basketball')}
               </div>
               <h3 className="text-2xl font-heading font-semibold">Basketball</h3>
             </div>

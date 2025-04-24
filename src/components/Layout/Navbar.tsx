@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../ThemeProvider';
-import { Basketball, Moon, Sun, Menu, X, Code, Brain } from 'lucide-react';
+import { Basketball as BasketballIcon, Moon, Sun, Menu, X, Code, Brain } from 'lucide-react';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -18,7 +18,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="relative">
-              <Basketball className="h-8 w-8 text-court-orange animate-spin-slow" />
+              <BasketballIcon className="h-8 w-8 text-court-orange animate-spin-slow" />
               <Code className="h-4 w-4 absolute -top-1 -right-1 text-tech-blue" />
               <Brain className="h-4 w-4 absolute -bottom-1 -right-1 text-ml-purple" />
             </div>

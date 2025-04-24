@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Basketball, Github, Linkedin, Twitter, Mail, Code, Brain } from 'lucide-react';
+import { Basketball as BasketballIcon, Github, Linkedin, Twitter, Mail, Code, Brain } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <div className="relative">
-                <Basketball className="h-8 w-8 text-court-orange" />
+                <BasketballIcon className="h-8 w-8 text-court-orange" />
                 <Code className="h-4 w-4 absolute -top-1 -right-1 text-tech-blue" />
                 <Brain className="h-4 w-4 absolute -bottom-1 -right-1 text-ml-purple" />
               </div>
