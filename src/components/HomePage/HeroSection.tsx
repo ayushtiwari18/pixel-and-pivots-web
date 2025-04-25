@@ -1,10 +1,11 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import BasketballCanvas from '../3D/BasketballCanvas';
 import heroData from '../../data/hero.json';
-import { fadeUp, fadeIn, staggerContainer } from '@/utils/animations';
+import { fadeUp, fadeIn, staggerContainer, fadeUpWithDelay, scaleIn } from '@/utils/animations';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -138,21 +139,29 @@ const HeroSection = () => {
           </motion.div>
           
           <div className="relative hidden md:block h-[500px]">
+            {/* Replace the 3D basketball canvas with a styled div */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              className="h-full w-full"
+              className="h-full w-full bg-gradient-to-br from-court-orange/20 to-court-orange/5 rounded-full flex items-center justify-center"
             >
-              <BasketballCanvas />
+              <div className="relative w-64 h-64">
+                <div className="absolute inset-0 rounded-full bg-court-orange/30 animate-pulse"></div>
+                <div className="absolute inset-2 rounded-full bg-court-orange/40"></div>
+                <div className="absolute inset-0 w-full h-full">
+                  {/* Basketball lines */}
+                  <div className="absolute top-1/2 left-0 right-0 h-1 bg-black/20 transform -translate-y-1/2"></div>
+                  <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-black/20 transform -translate-x-1/2"></div>
+                </div>
+              </div>
             </motion.div>
             
             {/* Floating elements */}
             <motion.div 
-              variants={fadeUp}
+              variants={fadeUpWithDelay(1.2)}
               initial="hidden"
               animate="visible"
-              transition={{ delay: 1.2 }}
               className="absolute -top-4 -right-4 p-4 glass-effect rounded-lg animate-float shadow-lg"
             >
               <div className="w-20 h-16 bg-tech-blue/20 rounded flex items-center justify-center">
@@ -163,10 +172,9 @@ const HeroSection = () => {
             </motion.div>
             
             <motion.div 
-              variants={fadeUp}
+              variants={fadeUpWithDelay(1.5)}
               initial="hidden"
               animate="visible"
-              transition={{ delay: 1.5 }}
               className="absolute -bottom-4 -left-4 p-4 glass-effect rounded-lg animate-float shadow-lg" 
               style={{ animationDelay: '1s' }}
             >
