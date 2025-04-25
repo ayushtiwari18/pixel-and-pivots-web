@@ -6,10 +6,10 @@ import { projects } from "../data/projects";
 import { Link } from "react-router-dom";
 import { ArrowRight, Github, ExternalLink } from "lucide-react";
 
-type ProjectCategory = "frontend" | "backend" | "fullstack" | "ml" | "mobile";
+type ProjectCategory = "web" | "ml" | "hybrid" | "all";
 
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory>("all");
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -43,16 +43,12 @@ const Projects = () => {
   
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "frontend":
+      case "web":
         return "bg-tech-blue text-white";
-      case "backend":
-        return "bg-court-orange text-white";
-      case "fullstack":
-        return "bg-purple-500 text-white";
       case "ml":
         return "bg-ml-purple text-white";
-      case "mobile":
-        return "bg-green-500 text-white";
+      case "hybrid":
+        return "bg-court-orange text-white";
       default:
         return "bg-gray-500 text-white";
     }
@@ -74,7 +70,7 @@ const Projects = () => {
         </motion.div>
 
         <div className="flex flex-wrap gap-2 justify-center mb-12">
-          {(["all", "frontend", "backend", "fullstack", "ml", "mobile"] as const).map((category) => (
+          {(["all", "web", "ml", "hybrid"] as const).map((category) => (
             <motion.button
               key={category}
               whileHover={{ scale: 1.05 }}
@@ -86,7 +82,7 @@ const Projects = () => {
                   : "bg-secondary hover:bg-secondary/80"
               }`}
             >
-              {category === "all" ? "All Projects" : category === "ml" ? "Machine Learning" : category.charAt(0).toUpperCase() + category.slice(1)}
+              {category === "all" ? "All Projects" : category === "ml" ? "Machine Learning" : category === "hybrid" ? "Hybrid" : category.charAt(0).toUpperCase() + category.slice(1)}
             </motion.button>
           ))}
         </div>
@@ -130,7 +126,7 @@ const Projects = () => {
                     <h3 className="text-xl font-heading font-bold mb-2">{project.title}</h3>
                     <p className="text-muted-foreground mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies?.map((tech, index) => (
+                      {project.technologies && project.technologies.map((tech, index) => (
                         <span 
                           key={index} 
                           className="px-2 py-1 text-xs bg-secondary rounded-full"
@@ -148,9 +144,9 @@ const Projects = () => {
                       View Details <ArrowRight className="ml-1 h-4 w-4" />
                     </Link>
                     <div className="flex gap-2">
-                      {project.githubUrl && (
+                      {(project.github || project.githubUrl) && (
                         <a
-                          href={project.githubUrl}
+                          href={project.github || project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 rounded-full hover:bg-secondary transition-colors"
@@ -159,9 +155,9 @@ const Projects = () => {
                           <Github className="h-5 w-5" />
                         </a>
                       )}
-                      {project.liveUrl && (
+                      {(project.demo || project.liveUrl) && (
                         <a
-                          href={project.liveUrl}
+                          href={project.demo || project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2 rounded-full hover:bg-secondary transition-colors"

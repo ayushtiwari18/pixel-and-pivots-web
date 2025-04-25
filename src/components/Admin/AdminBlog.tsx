@@ -7,9 +7,9 @@ import { Edit, Trash2, Plus, X, Eye, FileText } from "lucide-react";
 const AdminBlog = () => {
   const [postsList, setPostsList] = useState(blogPosts);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [postToDelete, setPostToDelete] = useState<number | null>(null);
+  const [postToDelete, setPostToDelete] = useState<string | null>(null);
   
-  const handleDeleteClick = (id: number) => {
+  const handleDeleteClick = (id: string) => {
     setPostToDelete(id);
     setIsDeleteModalOpen(true);
   };
@@ -90,7 +90,7 @@ const AdminBlog = () => {
                       </div>
                       <div className="flex items-center">
                         <FileText className="h-4 w-4 mr-1 text-muted-foreground" />
-                        <span className="text-sm">{post.readingTime} min</span>
+                        <span className="text-sm">{post.readingTime || 5} min</span>
                       </div>
                     </div>
                   </td>

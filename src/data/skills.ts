@@ -3,9 +3,10 @@ export interface Skill {
   id: string;
   name: string;
   level: number; // 1-100
-  category: 'web' | 'ml' | 'basketball';
+  category: 'web' | 'ml' | 'basketball' | 'frontend' | 'backend' | 'tools';
   icon?: string;
   color?: string;
+  details?: string[]; // Adding details property
 }
 
 export const skills: Skill[] = [
@@ -16,6 +17,7 @@ export const skills: Skill[] = [
     level: 90,
     category: 'web',
     color: '#61DAFB',
+    details: ['Component architecture', 'Hooks', 'Context API', 'Redux'],
   },
   {
     id: 'typescript',
@@ -23,6 +25,7 @@ export const skills: Skill[] = [
     level: 85,
     category: 'web',
     color: '#3178C6',
+    details: ['Type systems', 'Interfaces', 'Generics', 'Utility types'],
   },
   {
     id: 'node',
@@ -30,6 +33,7 @@ export const skills: Skill[] = [
     level: 80,
     category: 'web',
     color: '#8CC84B',
+    details: ['Express', 'API development', 'Middleware', 'Authentication'],
   },
   {
     id: 'nextjs',
@@ -37,6 +41,7 @@ export const skills: Skill[] = [
     level: 85,
     category: 'web',
     color: '#000000',
+    details: ['Server components', 'API routes', 'Static generation', 'ISR'],
   },
   {
     id: 'tailwind',
@@ -44,6 +49,7 @@ export const skills: Skill[] = [
     level: 90,
     category: 'web',
     color: '#06B6D4',
+    details: ['Responsive design', 'Custom theming', 'Component styling'],
   },
   {
     id: 'graphql',
@@ -51,6 +57,7 @@ export const skills: Skill[] = [
     level: 75,
     category: 'web',
     color: '#E535AB',
+    details: ['Schema design', 'Resolvers', 'Apollo Client', 'Federation'],
   },
   
   // Machine Learning Skills
@@ -60,6 +67,7 @@ export const skills: Skill[] = [
     level: 90,
     category: 'ml',
     color: '#3776AB',
+    details: ['NumPy', 'Pandas', 'Data processing', 'OOP'],
   },
   {
     id: 'tensorflow',
@@ -67,6 +75,7 @@ export const skills: Skill[] = [
     level: 80,
     category: 'ml',
     color: '#FF6F00',
+    details: ['Neural networks', 'Model training', 'TF.js', 'Keras'],
   },
   {
     id: 'pytorch',
@@ -74,6 +83,7 @@ export const skills: Skill[] = [
     level: 85,
     category: 'ml',
     color: '#EE4C2C',
+    details: ['Dynamic computation', 'Vision models', 'Transfer learning'],
   },
   {
     id: 'computer-vision',
@@ -81,6 +91,7 @@ export const skills: Skill[] = [
     level: 75,
     category: 'ml',
     color: '#8B5CF6',
+    details: ['Object detection', 'Pose estimation', 'Motion tracking'],
   },
   {
     id: 'nlp',
@@ -88,6 +99,7 @@ export const skills: Skill[] = [
     level: 70,
     category: 'ml',
     color: '#8B5CF6',
+    details: ['Sentiment analysis', 'Text classification', 'BERT models'],
   },
   {
     id: 'data-analysis',
@@ -95,6 +107,7 @@ export const skills: Skill[] = [
     level: 85,
     category: 'ml',
     color: '#1E88E5',
+    details: ['Statistical analysis', 'Data visualization', 'Hypothesis testing'],
   },
   
   // Basketball Skills
@@ -104,6 +117,7 @@ export const skills: Skill[] = [
     level: 85,
     category: 'basketball',
     color: '#FF914D',
+    details: ['Three-point range', 'Free throws', 'Mid-range jumper'],
   },
   {
     id: 'dribbling',
@@ -111,6 +125,7 @@ export const skills: Skill[] = [
     level: 80,
     category: 'basketball',
     color: '#FF914D',
+    details: ['Crossovers', 'Behind the back', 'Change of pace'],
   },
   {
     id: 'defense',
@@ -118,6 +133,7 @@ export const skills: Skill[] = [
     level: 75,
     category: 'basketball',
     color: '#FF914D',
+    details: ['On-ball defense', 'Help defense', 'Shot blocking'],
   },
   {
     id: 'court-vision',
@@ -125,6 +141,7 @@ export const skills: Skill[] = [
     level: 90,
     category: 'basketball',
     color: '#FF914D',
+    details: ['Passing lanes', 'Anticipation', 'Basketball IQ'],
   },
   {
     id: 'teamwork',
@@ -132,6 +149,7 @@ export const skills: Skill[] = [
     level: 95,
     category: 'basketball',
     color: '#FF914D',
+    details: ['Communication', 'Leadership', 'Role acceptance'],
   },
   {
     id: 'conditioning',
@@ -139,5 +157,6 @@ export const skills: Skill[] = [
     level: 80,
     category: 'basketball',
     color: '#FF914D',
+    details: ['Endurance', 'Strength', 'Agility training'],
   },
 ];

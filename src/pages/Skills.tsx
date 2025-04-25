@@ -5,10 +5,10 @@ import Layout from "../components/Layout/Layout";
 import { skills } from "../data/skills";
 import { Check } from "lucide-react";
 
-type SkillCategory = "frontend" | "backend" | "ml" | "tools";
+type SkillCategory = "web" | "ml" | "basketball" | "all";
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState<SkillCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<SkillCategory>("all");
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,10 +19,9 @@ const Skills = () => {
     : skills.filter(skill => skill.category === activeCategory);
 
   const categoryColors: Record<string, string> = {
-    frontend: "from-tech-blue to-tech-blue/70",
-    backend: "from-court-orange to-court-orange/70",
+    web: "from-tech-blue to-tech-blue/70",
     ml: "from-ml-purple to-ml-purple/70",
-    tools: "from-green-500 to-green-500/70",
+    basketball: "from-court-orange to-court-orange/70",
     all: "from-primary to-primary/70"
   };
 
@@ -59,13 +58,13 @@ const Skills = () => {
         >
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">My Skills</h1>
           <p className="text-xl text-muted-foreground">
-            A diverse set of skills spanning web development, machine learning, and tools
+            A diverse set of skills spanning web development, machine learning, and basketball
             that I've mastered through years of projects and continuous learning.
           </p>
         </motion.div>
 
         <div className="flex flex-wrap gap-2 justify-center mb-12">
-          {(["all", "frontend", "backend", "ml", "tools"] as const).map((category) => (
+          {(["all", "web", "ml", "basketball"] as const).map((category) => (
             <motion.button
               key={category}
               whileHover={{ scale: 1.05 }}
@@ -77,7 +76,7 @@ const Skills = () => {
                   : "bg-secondary hover:bg-secondary/80"
               }`}
             >
-              {category === "all" ? "All Skills" : category === "ml" ? "Machine Learning" : category.charAt(0).toUpperCase() + category.slice(1)}
+              {category === "all" ? "All Skills" : category === "ml" ? "Machine Learning" : category === "web" ? "Web Development" : category.charAt(0).toUpperCase() + category.slice(1)}
             </motion.button>
           ))}
         </div>
@@ -94,18 +93,16 @@ const Skills = () => {
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
               className={`card p-6 rounded-lg border backdrop-blur-sm shadow-sm hover:shadow-md transition-all
-                ${skill.category === "frontend" ? "border-tech-blue/30 bg-tech-blue/5" : ""}
-                ${skill.category === "backend" ? "border-court-orange/30 bg-court-orange/5" : ""}
+                ${skill.category === "web" ? "border-tech-blue/30 bg-tech-blue/5" : ""}
                 ${skill.category === "ml" ? "border-ml-purple/30 bg-ml-purple/5" : ""}
-                ${skill.category === "tools" ? "border-green-500/30 bg-green-500/5" : ""}
+                ${skill.category === "basketball" ? "border-court-orange/30 bg-court-orange/5" : ""}
               `}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className={`p-2 rounded-md 
-                  ${skill.category === "frontend" ? "bg-tech-blue/20 text-tech-blue" : ""}
-                  ${skill.category === "backend" ? "bg-court-orange/20 text-court-orange" : ""}
+                  ${skill.category === "web" ? "bg-tech-blue/20 text-tech-blue" : ""}
                   ${skill.category === "ml" ? "bg-ml-purple/20 text-ml-purple" : ""}
-                  ${skill.category === "tools" ? "bg-green-500/20 text-green-500" : ""}
+                  ${skill.category === "basketball" ? "bg-court-orange/20 text-court-orange" : ""}
                 `}>
                   {skill.icon ? (
                     <span className="text-2xl">{skill.icon}</span>
@@ -115,19 +112,20 @@ const Skills = () => {
                 </div>
                 <h3 className="text-lg font-heading font-semibold">{skill.name}</h3>
               </div>
-              <div className="space-y-1">
-                {skill.details.map((detail, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <div className={`h-1.5 w-1.5 rounded-full
-                      ${skill.category === "frontend" ? "bg-tech-blue" : ""}
-                      ${skill.category === "backend" ? "bg-court-orange" : ""}
-                      ${skill.category === "ml" ? "bg-ml-purple" : ""}
-                      ${skill.category === "tools" ? "bg-green-500" : ""}
-                    `}></div>
-                    <span className="text-sm text-muted-foreground">{detail}</span>
-                  </div>
-                ))}
-              </div>
+              {skill.details && (
+                <div className="space-y-1">
+                  {skill.details.map((detail, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <div className={`h-1.5 w-1.5 rounded-full
+                        ${skill.category === "web" ? "bg-tech-blue" : ""}
+                        ${skill.category === "ml" ? "bg-ml-purple" : ""}
+                        ${skill.category === "basketball" ? "bg-court-orange" : ""}
+                      `}></div>
+                      <span className="text-sm text-muted-foreground">{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
               {skill.level && (
                 <div className="mt-4">
                   <div className="flex justify-between text-xs mb-1">
@@ -140,10 +138,9 @@ const Skills = () => {
                       animate={{ width: `${skill.level}%` }}
                       transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
                       className={`h-full rounded-full
-                        ${skill.category === "frontend" ? "bg-tech-blue" : ""}
-                        ${skill.category === "backend" ? "bg-court-orange" : ""}
+                        ${skill.category === "web" ? "bg-tech-blue" : ""}
                         ${skill.category === "ml" ? "bg-ml-purple" : ""}
-                        ${skill.category === "tools" ? "bg-green-500" : ""}
+                        ${skill.category === "basketball" ? "bg-court-orange" : ""}
                       `}
                     ></motion.div>
                   </div>

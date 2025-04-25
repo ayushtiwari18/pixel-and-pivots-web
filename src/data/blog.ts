@@ -7,6 +7,9 @@ export interface BlogPost {
   date: string;
   category: 'basketball' | 'web-dev' | 'machine-learning';
   image: string;
+  coverImage?: string; // Adding coverImage property
+  readingTime?: number; // Adding readingTime property
+  author?: string; // Adding author property
   tags: string[];
   featured: boolean;
 }
@@ -19,6 +22,9 @@ export const blogPosts: BlogPost[] = [
     date: '2025-03-15',
     category: 'basketball',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 8,
+    author: 'Jake Davis',
     tags: ['Basketball', 'Data Analytics', 'Performance'],
     featured: true,
   },
@@ -29,6 +35,9 @@ export const blogPosts: BlogPost[] = [
     date: '2025-02-28',
     category: 'machine-learning',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 12,
+    author: 'Jake Davis',
     tags: ['ML', 'Neural Networks', 'Basketball', 'Education'],
     featured: true,
   },
@@ -39,6 +48,9 @@ export const blogPosts: BlogPost[] = [
     date: '2025-01-20',
     category: 'web-dev',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 10,
+    author: 'Jake Davis',
     tags: ['React', 'Performance', 'JavaScript', 'Optimization'],
     featured: true,
   },
@@ -49,6 +61,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-12-10',
     category: 'machine-learning',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 15,
+    author: 'Jake Davis',
     tags: ['Computer Vision', 'Transfer Learning', 'Sports Analytics'],
     featured: false,
   },
@@ -59,6 +74,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-11-05',
     category: 'basketball',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 7,
+    author: 'Jake Davis',
     tags: ['Leadership', 'Team Building', 'Basketball', 'Tech Culture'],
     featured: false,
   },
@@ -69,6 +87,9 @@ export const blogPosts: BlogPost[] = [
     date: '2024-10-22',
     category: 'web-dev',
     image: '/placeholder.svg',
+    coverImage: '/placeholder.svg',
+    readingTime: 9,
+    author: 'Jake Davis',
     tags: ['Web Development', 'Architecture', 'Performance', 'Next.js'],
     featured: false,
   },

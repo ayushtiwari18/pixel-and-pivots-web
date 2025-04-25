@@ -7,9 +7,9 @@ import { Edit, Trash2, Plus, X } from "lucide-react";
 const AdminProjects = () => {
   const [projectsList, setProjectsList] = useState(projects);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [projectToDelete, setProjectToDelete] = useState<number | null>(null);
+  const [projectToDelete, setProjectToDelete] = useState<string | null>(null);
   
-  const handleDeleteClick = (id: number) => {
+  const handleDeleteClick = (id: string) => {
     setProjectToDelete(id);
     setIsDeleteModalOpen(true);
   };

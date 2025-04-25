@@ -65,14 +65,12 @@ const BlogPost = () => {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "development":
+      case "web-dev":
         return "bg-tech-blue text-white";
       case "machine-learning":
         return "bg-ml-purple text-white";
       case "basketball":
         return "bg-court-orange text-white";
-      case "career":
-        return "bg-green-500 text-white";
       default:
         return "bg-gray-500 text-white";
     }
@@ -109,11 +107,11 @@ const BlogPost = () => {
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-4 w-4 mr-1" />
-                  <span>{post.readingTime} min read</span>
+                  <span>{post.readingTime || 5} min read</span>
                 </div>
                 <div className="flex items-center">
                   <User className="h-4 w-4 mr-1" />
-                  <span>{post.author}</span>
+                  <span>{post.author || "Jake Davis"}</span>
                 </div>
               </div>
 
@@ -129,10 +127,10 @@ const BlogPost = () => {
               </div>
             </header>
 
-            {post.coverImage && (
+            {(post.coverImage || post.image) && (
               <div className="mb-10 rounded-xl overflow-hidden shadow-lg">
                 <img
-                  src={post.coverImage}
+                  src={post.coverImage || post.image}
                   alt={post.title}
                   className="w-full h-auto"
                 />
@@ -213,9 +211,9 @@ const BlogPost = () => {
                         className="card border shadow-sm hover:shadow-md transition-all rounded-lg overflow-hidden"
                       >
                         <div className="h-40 overflow-hidden">
-                          {relatedPost.coverImage && (
+                          {(relatedPost.coverImage || relatedPost.image) && (
                             <img
-                              src={relatedPost.coverImage}
+                              src={relatedPost.coverImage || relatedPost.image}
                               alt={relatedPost.title}
                               className="w-full h-full object-cover"
                             />
@@ -229,7 +227,7 @@ const BlogPost = () => {
                             </span>
                             <div className="flex items-center">
                               <Clock className="h-3 w-3 mr-1" />
-                              <span>{relatedPost.readingTime} min</span>
+                              <span>{relatedPost.readingTime || 5} min</span>
                             </div>
                           </div>
                         </div>

@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import { blogPosts } from "../data/blog";
 import { Calendar, Clock, ArrowRight, Search } from "lucide-react";
 
-type BlogCategory = "development" | "machine-learning" | "basketball" | "career";
+type BlogCategory = "web-dev" | "machine-learning" | "basketball" | "all";
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<BlogCategory | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<BlogCategory>("all");
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -27,14 +27,12 @@ const Blog = () => {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "development":
+      case "web-dev":
         return "bg-tech-blue text-white";
       case "machine-learning":
         return "bg-ml-purple text-white";
       case "basketball":
         return "bg-court-orange text-white";
-      case "career":
-        return "bg-green-500 text-white";
       default:
         return "bg-gray-500 text-white";
     }
@@ -73,7 +71,7 @@ const Blog = () => {
         >
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">My Blog</h1>
           <p className="text-xl text-muted-foreground">
-            Insights and experiences on the intersection of basketball, full-stack development, and machine learning.
+            Insights and experiences on the intersection of basketball, web development, and machine learning.
           </p>
         </motion.div>
 
@@ -90,7 +88,7 @@ const Blog = () => {
           </div>
 
           <div className="flex flex-wrap gap-2 justify-center">
-            {(["all", "development", "machine-learning", "basketball", "career"] as const).map((category) => (
+            {(["all", "web-dev", "machine-learning", "basketball"] as const).map((category) => (
               <motion.button
                 key={category}
                 whileHover={{ scale: 1.05 }}
@@ -131,9 +129,9 @@ const Blog = () => {
                     className="card border backdrop-blur-sm bg-background/50 dark:bg-tech-navy/30 overflow-hidden shadow-md hover:shadow-lg transition-all rounded-xl flex flex-col h-full"
                   >
                     <Link to={`/blog/${post.id}`} className="block h-48 overflow-hidden">
-                      {post.coverImage && (
+                      {(post.coverImage || post.image) && (
                         <img
-                          src={post.coverImage}
+                          src={post.coverImage || post.image}
                           alt={post.title}
                           className="w-full h-full object-cover transition-transform hover:scale-105"
                         />
@@ -163,7 +161,7 @@ const Blog = () => {
                       </Link>
                       <div className="flex items-center text-xs text-muted-foreground">
                         <Clock className="h-3 w-3 mr-1" />
-                        <span>{post.readingTime} min read</span>
+                        <span>{post.readingTime || 5} min read</span>
                       </div>
                     </div>
                   </motion.div>
