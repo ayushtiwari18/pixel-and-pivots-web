@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Volleyball as BasketballIcon, Code, Brain, ArrowRight } from "lucide-react";
 import { timelineEvents } from "../data/timeline";
 import { Link } from "react-router-dom";
+import { fadeUp, fadeIn, staggerContainer, fadeUpWithDelay, scaleIn } from "@/utils/animations";
 
 const About = () => {
   useEffect(() => {
@@ -37,36 +38,13 @@ const About = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.23, 1, 0.32, 1]
-      }
-    }
-  };
-
   return (
     <Layout>
       <div className="container-custom py-16 md:py-24">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          variants={scaleIn}
+          initial="hidden"
+          animate="visible"
           className="max-w-4xl mx-auto mb-16 text-center"
         >
           <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">My Journey</h1>
@@ -77,11 +55,10 @@ const About = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line with gradient */}
           <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-court-orange via-tech-blue to-ml-purple"></div>
 
           <motion.div 
-            variants={containerVariants}
+            variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -90,7 +67,7 @@ const About = () => {
             {timelineEvents.map((event, index) => (
               <motion.div
                 key={event.id}
-                variants={itemVariants}
+                variants={fadeUpWithDelay(index * 0.2)}
                 className={`relative flex flex-col md:flex-row ${
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 } group`}
@@ -134,10 +111,10 @@ const About = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
           className="mt-20 max-w-2xl mx-auto text-center"
         >
           <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">Where I'm Headed</h2>
