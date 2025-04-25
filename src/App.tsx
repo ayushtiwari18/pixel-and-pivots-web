@@ -7,16 +7,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeProvider";
 
 import Index from "./pages/Index";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Contact from "./pages/Contact";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
-
-// Import future pages (commented out until created)
-// import About from "./pages/About";
-// import Skills from "./pages/Skills";
-// import Projects from "./pages/Projects";
-// import ProjectDetail from "./pages/ProjectDetail";
-// import Blog from "./pages/Blog";
-// import BlogPost from "./pages/BlogPost";
-// import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -29,14 +28,14 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            {/* Uncomment as you create these pages */}
-            {/* <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/contact" element={<Contact />} /> */}
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin/*" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
